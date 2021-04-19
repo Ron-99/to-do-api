@@ -39,6 +39,18 @@ module.exports = {
         }
     },
 
+    async login (req, res){
+      try{
+            const data = await service.login(req.body);
+            res.status(201).send(data);
+      }catch (e){
+          console.error(e);
+          res.status(400).send({
+              message: 'Falha ao processar sua requisição'
+          });
+      }
+    },
+
     async update(req, res){
         try{
             const { id } = req.params;

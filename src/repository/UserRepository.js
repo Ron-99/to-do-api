@@ -10,6 +10,10 @@ module.exports = {
         return await User.findByPk(id);
     },
 
+    async findByEmailAndPassword(email, password){
+        return await User.findOne({ attributes:['name', 'email'] ,where: {email, password}})
+    },
+
     async create(data){
         return await User.create(data);
     },
